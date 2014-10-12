@@ -1,0 +1,12 @@
+﻿{
+    "name_locale": {
+        "zh-CN": "全国", 
+        "zh": "全國"
+    }, 
+    "name": "China", 
+    "cur_version": "8000", 
+    "compatible": "4.5.0", 
+    "base_version": "8000", 
+    "type": 1, 
+    "id": "china"
+}
