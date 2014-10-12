@@ -1,3 +1,11 @@
 在这里写下：
 1.`接下来要做的`
 2.`服务器端的要求`
+接下来今天要做的就是帮帮忙这里
+我传的字符串key为
+user，phonenumber，content
+传的语音就是
+语音文件
+phonenumber，user
+
+请求的方式为get，参数为bbmInformation
