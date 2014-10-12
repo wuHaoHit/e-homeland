@@ -9,3 +9,6 @@ user，phonenumber，content
 phonenumber，user
 
 请求的方式为get，参数为bbmInformation
+
+
+ps：我现在正在做im即时通讯，我需要实现以下功能，物业的管理端可以获得他所管理范围内的所有用户的用户名，业主的客户端可以知道管理他的那个物业的用户名
