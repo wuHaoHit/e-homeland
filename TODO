@@ -1,3 +1,8 @@
 在这里写下：
 1.`接下来要做的`
+    (1)发布的信息投入使用
+    (2)获取新闻
 2.`服务器端的要求`
+  (1)把发布的发布页面的信息(json中的)提取出来，存入相应类别的jsonarray中(food entertainment hotal shop extra)
+  ps.页面也该按对应类新建5个了,地址类似于/foodInfo /entertainmentInfo 之类的吧
+  (2)创建一个地址，可以get到一个字符串，内容是新闻，具体是什么新闻暂且自定，待后续开发
