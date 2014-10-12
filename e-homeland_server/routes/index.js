@@ -102,8 +102,16 @@ router.post('/image-upload', function(req,res){
             })
 });
 
+router.post('/jsonreceipt',function(req,res){
+	var obj=JSON.parse(req.body.json);
+	console.log(obj.class);
+	//console.log(req.body);
+	//console.log(req.files);
+	res.send("done");
+});
+
 router.post('/helpInformation',function(req,res){
-	console.log(req.body);
+	console.log(req.body.json.class);
 	console.log(req.files);
 	res.send("200");
 
@@ -142,39 +150,54 @@ router.get('/getHelpList',function(req,res){
 });
 
 router.post('/publishhelp',function(req,res){
-	console.log(req.files);
-	console.log(req.body);
-	var name=req.body.name;
-	console.log(req.body.);
+	var obj=req.body;
+	var user=obj.user;//user，phonenumber，content
+	var phone=obj.phonenumber;
+	var content=obj.content;
+	var type;
+	var help;
+	if(!req.files.originalname){
+		type=0;
+	}else{
+		type=1;
+	}
+
+	if(type==0){
+		help={
+			name:user,
+			phone:phone,
+			content:content,
+			type:type,
+		}
+	}else{
+		var Path="/home/gxcissad/nodejs/e-homeland/public/upload/"+req.files.originalname;
+		fs.exists(Path, function(exists){
+			if (exists) {
+				fs.readFile(Path, "binary", function(err, file){
+					if(err){
+						throw err;
+					}
+					help={
+						name:name,
+						phone:phone,
+						content:file,
+						type:type,
+					};
+				});
+			}
+		});
+	}
 
 	mongodb.open(function(err, db) {
 		if (err) {
 			return callback(err);
 		}
-
-		db.collection('help', function(err, collection) {
+		db.collection('helps', function(err, collection) {
 			if (err) {
 				mongodb.close();
 				return callback(err);
 			}
-			var help={
-				name:name,
-
-			}
-
-			collection.findOne({"name" : name}, function(err, doc) {
-				if (doc) {
-					res.writeHead(200, {
-						'Content-Length': doc.file.length,
-						'Content-Type': 'multipart' });
-					res.write(doc.file,'binary');
-					res.end();
-					fs.writeFile(filePath, doc.file, 'binary', function(err){
-						if(err){
-							throw err;
-						}
-					});
-				}
+			collection.insert(help, {safe: true}, function(err) {
 				mongodb.close();
 			});
 		});
@@ -183,64 +206,37 @@ router.post('/publishhelp',function(req,res){
 
 
 router.get('/gethelp',function(req,res){
-	var random=parseInt(Math.random()*10);
-	var Path="/home/gxcissad/nodejs/e-homeland/public/images/1.png";
-	var path = require("path");
+	console.log(req.query);
+	var name=req.query.name;
 
-	var filePath='/home/gxcissad/nodejs/e-homeland/public/cache/2.tcy';
-	var name;
-
-	fs.readdir("./public/images/", function (err,files){
-		if(err){
-			throw err;
-		}else{
-			Path="/home/gxcissad/nodejs/e-homeland/public/images/"+files[random];
-			name=files[random];
+	mongodb.open(function(err, db) {
+		if (err) {
+			return callback(err);
 		}
-	});
 
-	fs.exists(Path, function(exists){
-		if (exists) {
-			//res.sendfile(Path);
-
-			fs.readFile(Path, "binary", function(err, file) {
-				var img={
-					"name":name,
-					"file":file,
-				};
-
-				mongodb.open(function(err, db) {
-					if (err) {
-						return callback(err);
-					}
-
-					db.collection('images', function(err, collection) {
-						if (err) {
-							mongodb.close();
-							return callback(err);
-						}
-
-						collection.findOne({"name" : name}, function(err, doc) {
-							if (doc) {
-								res.writeHead(200, {
-									'Content-Length': doc.file.length,
-									'Content-Type': 'multipart' });
-								res.write(doc.file,'binary');
-								res.end();
-								fs.writeFile(filePath, doc.file, 'binary', function(err){
-									if(err){
-										throw err;
-									}
-								});
-							}
-							mongodb.close();
-						});
+		db.collection('helps', function(err, collection) {
+			if (err){
+				mongodb.close();
+				return callback(err);
+			}
+			var option={
+				"limit": 10,
+			}
+			collection.find({},option).toArray(function(err, doc){
+				if(err){
+					throw err;
+				}
+				if (doc){
+					var json=[];
+					doc.forEach(function (single){
+						json.push({ id : single.type, content : single.content , phonenumber : single.phone });
 					});
-				});
+					res.render('helpinformation',{"singlehelps" : json });
+				}
+				mongodb.close();
 			});
-		}
+		});
 	});
-	//res.sendfile(filePath);
 });
 
 router.post('/post',function(req,res){
@@ -304,12 +300,6 @@ router.get('/xmlControlCenter',function(req,res){
 	//	        {"name":"zongzi","address":"test2","phone":"186"},  
 	//	        {"name":"maomao","address":"test3","phone":"150"}  
 	//]});
-});
-
-router.post('/jsonreceipt',function(req,res){
-	console.log(req.body);
-	console.log(req.files);
-	res.send("done");
 });
 
 router.get('/login',function(req,res){
