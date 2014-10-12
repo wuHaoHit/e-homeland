@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="127.0.0.1:3000/users" method="POST">
+    	name : <input type="text" id="name"></input>
+    	pwd : <input type="text" id="pwd"></input>
+    	<input type="submit"></input>
+    </form>
+  </body>
+</html>
