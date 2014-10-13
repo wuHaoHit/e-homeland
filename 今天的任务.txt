@@ -12,3 +12,7 @@
 学长你晚上的时候做完然后我再测试
 
 2:我明天要做物业管理人员的那个客户端，学长你设计一下你后台的格式，需要将物业管理人员的与业主区分开
+
+3: 爱宠之家 我发给服务器一张图片和几个键值对，key，“petName”,”petVariety”,”petOwner”
+	请求的时候，每次请求一张图片，和一个json，里面有{“petPhotoID”:”id”,”petName”:”name”,
+	“petVariety”:”variety”,“petOwner”:”owner”,后面还有n个json对象里面的key			是“commentUser”和“comments”}
