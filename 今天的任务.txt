@@ -1,0 +1,12 @@
+1：帮帮忙那里，有几个问题
+
+  1：学长我每次请求的话你都要返回给我新的数据
+  2：我穿语音的时候，你返回给我的xml格式不对，
+<information>
+	<id>0</id>
+	<content>null</content>
+	<phonenumber>13274603175</phonenumber>
+</information>
+
+这个是你给我返回的，当我穿语音的时候，你要返回给我id为1，而且content内容是语音文件的Url
+学长你晚上的时候做完然后我再测试
