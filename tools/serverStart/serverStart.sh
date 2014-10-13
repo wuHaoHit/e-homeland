@@ -1,2 +1,2 @@
-sudo mongod -dbpath=/data/mongodb/db -logpath=/data/mongodb/log &
+sudo ../../../mongodb-osx-x86_64-2.6.5/bin/mongod &
 supervisor ../../e-homeland_server/bin/www
