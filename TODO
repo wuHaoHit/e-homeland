@@ -67,3 +67,20 @@ Param：NAME，CONTENT			//并对参数进行适当补充说明
 Requirement：这个模块需要实现的功能的要求及适当说明
 
 ======================================================================================================================
+function:发送宠物图片
+url：/pushpet
+Method:
+Param:"petName":"name","petVariety":"variety","petOwner":"owner"
+Requirement:要求在存储图片时为图片分配一个唯一id
+============================================
+function:获取宠物图片
+url:/getpet
+Method:post,get
+Param:post--{"request":"getPetImage","petImageId":"id"//本地存储的最新的图片id}
+返回petImageId之后的图片信息,包括
+"imageUrl":"url","imageId":"id","petName":"name","petVariety":"variety",
+"petOwner":"owner",后面还有n个{"commentUser":"commentUser","comments":"comment"}
+      get--没有参数
+Requirement:
+===========================================
+
