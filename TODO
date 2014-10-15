@@ -83,4 +83,13 @@ Param:post--{"request":"getPetImage","petImageId":"id"//本地存储的最新的
       get--没有参数
 Requirement:
 ===========================================
+========================================================================================================================
+function：获取并更新用户信息
+Url：/getuserInfo /postuserInfo
+Method：GET/post
+Param：post-{"username","userImage","userautograph","userrealname","useraddress"}//其中userImage是图片，其余为字符串，除了userautograph和userimage是可以不存在的其他是必有的
+get - 注册的id
+Requirement：这个模块是显示用户信息并且可以更新用户信息，后台要根据get时发送的id获取该id的信息，内容和post的参数一样，post时，会把更新的信息发送到后台，后台需要把这些信息更新到用户信息中
+
+======================================================================================================================
 
