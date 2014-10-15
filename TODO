@@ -67,3 +67,29 @@ Param：NAME，CONTENT			//并对参数进行适当补充说明
 Requirement：这个模块需要实现的功能的要求及适当说明
 
 ======================================================================================================================
+function:发送宠物图片
+url：/pushpet
+Method:
+Param:"petName":"name","petVariety":"variety","petOwner":"owner"
+Requirement:要求在存储图片时为图片分配一个唯一id
+============================================
+function:获取宠物图片
+url:/getpet
+Method:post,get
+Param:post--{"request":"getPetImage","petImageId":"id"//本地存储的最新的图片id}
+返回petImageId之后的图片信息,包括
+"imageUrl":"url","imageId":"id","petName":"name","petVariety":"variety",
+"petOwner":"owner",后面还有n个{"commentUser":"commentUser","comments":"comment"}
+      get--没有参数
+Requirement:
+===========================================
+========================================================================================================================
+function：获取并更新用户信息
+Url：/getuserInfo /postuserInfo
+Method：GET/post
+Param：post-{"username","userImage","userautograph","userrealname","useraddress"}//其中userImage是图片，其余为字符串，除了userautograph和userimage是可以不存在的其他是必有的
+get - 注册的id
+Requirement：这个模块是显示用户信息并且可以更新用户信息，后台要根据get时发送的id获取该id的信息，内容和post的参数一样，post时，会把更新的信息发送到后台，后台需要把这些信息更新到用户信息中
+
+======================================================================================================================
+
