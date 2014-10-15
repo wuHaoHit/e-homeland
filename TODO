@@ -48,12 +48,6 @@ Reply：这个是路径问题，晚上来再一起调试。
 2:我明天要做物业管理人员的那个客户端，学长你设计一下你后台的格式，需要将物业管理人员的与业主区分开
 Reply：我得根据你设计的要求设计后台啊？我不知道你要从什么地方get哪些内容或者post什么东西到什么地方。
 
-3: 爱宠之家 我发给服务器一张图片和几个键值对，key，“petName”,”petVariety”,”petOwner”
-	请求的时候，每次请求一张图片，和一个json，里面有{“petPhotoID”:”id”,”petName”:”name”,
-	“petVariety”:”variety”,“petOwner”:”owner”,后面还有n个json对象里面的key			是“commentUser”和“comments”}
-	
-Reply：正在做,且问：发到什么地方？
-
 ps:
 以后在这里提需求统一格式：
 
@@ -66,23 +60,39 @@ Method：GET/POST
 Param：NAME，CONTENT			//并对参数进行适当补充说明
 Requirement：这个模块需要实现的功能的要求及适当说明
 
-======================================================================================================================
+=========================================================================
+function:注册
+url:/register
+method:post
+param:"name","password","estate","phone","address"
+requirement:
+=============================================
 function:发送宠物图片
 url：/pushpet
-Method:
+Method:post
 Param:"petName":"name","petVariety":"variety","petOwner":"owner"
 Requirement:要求在存储图片时为图片分配一个唯一id
 ============================================
 function:获取宠物图片
-url:/getpet
+url:/getimage
 Method:post,get
 Param:post--{"request":"getPetImage","petImageId":"id"//本地存储的最新的图片id}
 返回petImageId之后的图片信息,包括
 "imageUrl":"url","imageId":"id","petName":"name","petVariety":"variety",
-"petOwner":"owner",后面还有n个{"commentUser":"commentUser","comments":"comment"}
+"petOwner":"owner",后面还有n个{"commentUser":"commentUser","comment":"comment"}
       get--没有参数
 Requirement:
 ===========================================
+function:添加宠物评论
+url:petcomment
+Method:post
+Param:"imageId":"id","commentUser":"user","comment":"comment"
+Requirement:
+==========================================
+function:添加宠物赞
+url:petcomment
+Method:post
+Param:"imageId":"id","zan":"+1"
 ========================================================================================================================
 function：获取并更新用户信息
 Url：/getjson 
