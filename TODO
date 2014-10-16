@@ -152,3 +152,15 @@ Param：get&community get={rebuy,carecar,clean,house,busness,green,health}中的
 Requirement：后台返回一个jsonarray内容为{"content":[{"name":"","charge":"","phonenum":""}]}
 
 ======================================================================================================================
+function:信息发布
+url:/pushinfo
+method:post
+param:"type","content","price","contact"."remark"
+requirement:
+===========================================
+function:获取发布的信息
+url:/pushinfo
+method:post
+param:"type"
+requirement:
+============================================
