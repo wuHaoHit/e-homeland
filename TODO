@@ -1,57 +1,3 @@
-在这里写下：
-1.`接下来要做的`
-    (1)发布的信息投入使用
-    (2)获取新闻
-2.`服务器端的要求`
-<<<<<<< HEAD
-  (1)把发布的发布页面的信息(json中的)提取出来，存入相应类别的jsonarray中(food entertainment hotal shop extra)
-  ps.页面也该按对应类新建5个了,地址类似于/foodInfo /entertainmentInfo 之类的吧
-  (2)创建一个地址，可以get到一个字符串，内容是新闻，具体是什么新闻暂且自定，待后续开发
-=======
-接下来今天要做的就是帮帮忙这里
-我传的字符串key为
-user，phonenumber，content
-传的语音就是
-语音文件
-phonenumber，user
-
-请求的方式为get，参数为bbmInformation
-
-
-ps：我现在正在做im即时通讯，我需要实现以下功能，物业的管理端可以获得他所管理范围内的所有用户的用户名，业主的客户端可以知道管理他的那个物业的用户名
-
-
-ps:我需要拍照的静态类，请上传
-
-ps:崔乃天和吴昊那里已经做完了，学长你有时间配合一下他们完成
->>>>>>> 8dcd8d5e4234d20b20fddb1cf02f30b252d4dd2c
-
-//上面那些是昨天push confilct造成的？
-
-把今天要做的那个文件删掉，一律把内容写在这里，且要求规范。
-
-1：帮帮忙那里，有几个问题
-
-  1：学长我每次请求的话你都要返回给我新的数据
-  2：我穿语音的时候，你返回给我的xml格式不对，
-<information>
-	<id>0</id>
-	<content>null</content>
-	<phonenumber>13274603175</phonenumber>
-</information>
-
-这个是你给我返回的，当我穿语音的时候，你要返回给我id为1，而且content内容是语音文件的Url
-学长你晚上的时候做完然后我再测试
-
-Reply：这个是路径问题，晚上来再一起调试。
-
-2:我明天要做物业管理人员的那个客户端，学长你设计一下你后台的格式，需要将物业管理人员的与业主区分开
-Reply：我得根据你设计的要求设计后台啊？我不知道你要从什么地方get哪些内容或者post什么东西到什么地方。
-
-ps:
-以后在这里提需求统一格式：
-
-
 ========================================================================================================================
 （例）
 function：获取帮助
@@ -68,102 +14,103 @@ param:"name","password","estate","phone","address"
 requirement:
 ========================================================================================================================
 function:发送宠物图片
-url：/pushpet
+url：pet/pushpet
 Method:post
 Param:"petName":"name","petVariety":"variety","petOwner":"owner"
 Requirement:要求在存储图片时为图片分配一个唯一id
+
 ========================================================================================================================
 function:获取宠物图片
-url:/getimage
-Method:post,get
+url:pet/getimage
+Method:get
 Param:post--{"request":"getPetImage","petImageId":"id"//本地存储的最新的图片id}
 返回petImageId之后的图片信息,包括
 "imageUrl":"url","imageId":"id","petName":"name","petVariety":"variety",
 "petOwner":"owner",后面还有n个{"commentUser":"commentUser","comment":"comment"}
       get--没有参数
 Requirement:
+
+
+Reply：你要json还是什么？？？？？？？？？？？？？？？？？？？？
+然后那个post是json的名字是吗？？？？？？？？？？？？？？？？？
 ========================================================================================================================
 function:添加宠物评论
-url:petcomment
+url:pet/comment
 Method:post
 Param:"imageId":"id","commentUser":"user","comment":"comment"
 Requirement:
 ========================================================================================================================
 function:添加宠物赞
-url:petcomment
+url:pet/dianzan
 Method:post
 Param:"imageId":"id","zan":"+1"
 ========================================================================================================================
-function：获取并更新用户信息
-Url：/getjson 
-Method：GET
+function：获取用户信息
+Url：user/getinfo
+Method：get
 Param: get&userid get=getuserinfo
 Requirement：这个模块是显示用户信息并且可以更新用户信息，后台要根据get时发送的id获取该id的信息
 要获取的有{"username","userImage","userautograph",
 "userrealname","useraddress","usercommunity"}//其中userImage是图片，其余为字符串，
 除了userautograph和userimage是可以不存在的其他是必有的
 
-
-======================================================================================================================
 ========================================================================================================================
-function：获取并更新用户信息
-Url：/postuserInfo 
+function：更新用户信息
+Url：user/postuserInfo 
 Method：post
 Param：post-{"username","userImage","userautograph","userrealname","useraddress""usercommunity"}
 //其中userImage是图片，其余为字符串，除了userautograph和userimage是可以不存在的其他是必有的 username即id
 Requirement：这个模块是显示用户信息并且可以更新用户信息,上传的信息如上，
 post时，会把更新的信息发送到后台，后台需要把这些信息更新到用户信息中
 
-======================================================================================================================
 ========================================================================================================================
 
 function：周边信息
-Url：/getjson
+Url：around/getaroundinfo
 Method：GET
 Param：get&community  get=food entertainment hotal shop extra中的一个 community 小区是一个字符串
 Requirement：在进入页面时要获取在该小区该类别的全部商家信息,用json传递，内容为：{content:[{"name":"","pername":"","addr":"","phone":"",class:""}]}
 
-======================================================================================================================
 ========================================================================================================================
 
 function：周边信息
-Url：/aroundpost
+Url：around/postaroundinfo
 Method：post
 Param：{"name":"","pername":"","addr":"","phone":"",class:"",community:""} 以及若干图片
 Requirement：美食:food 娱乐:entertainment 宾馆:hotal 购物:shop 其他:extra
 周边发布，内容还是以json为参数，和图片一起发送 后台应按其中的class和community将信息添加到对应小区对应类别的jsonarray中 照片也要存贮但暂时用不上
 
-======================================================================================================================
 ========================================================================================================================
 
 function：新闻获取
-Url：/getjson
+Url：news/getnews
 Method：get
 Param：get&community get=news
 Requirement：后台返回一个字符串，内容来自后台新闻发布(我怕也不知道目前有没有，但肯定会有的)
 
-======================================================================================================================
 ========================================================================================================================
 
 function：管家服务获取
-Url：/getjson
+Url：butler/getserver
 Method：get
 Param：get&community get={rebuy,carecar,clean,house,busness,green,health}中的一个
 Requirement：后台返回一个jsonarray内容为{"content":[{"name":"","charge":"","phonenum":""}]}
 
-======================================================================================================================
+=======================================================================================================================
 function:信息发布
-url:/pushinfo
+url:arount/pushinfo
 method:post
 param:"type","content","price","contact"."remark"
 requirement:
 ========================================================================================================================
 function:获取发布的信息
-url:/pushinfo
-method:post
+url:around/getinfo
+method:get
 param:"type"
 requirement:
 ========================================================================================================================
+Reply：上面这两个是不是重复了？？？？？？？？？？？？？？？？？？？？？？？？
+
 
 //填的时候认真一点！！！！！！！！！！！！！！！！！！！！！！别那么吊儿郎当的！！！！！！！！！！！！！！！！！！！！
 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
