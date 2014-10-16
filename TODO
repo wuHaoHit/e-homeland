@@ -97,7 +97,7 @@ Param:"imageId":"id","zan":"+1"
 function：获取并更新用户信息
 Url：/getjson 
 Method：GET
-Param: userinfo&userid
+Param: get&userid get=getuserinfo
 Requirement：这个模块是显示用户信息并且可以更新用户信息，后台要根据get时发送的id获取该id的信息
 要获取的有{"username","userImage","userautograph",
 "userrealname","useraddress","usercommunity"}//其中userImage是图片，其余为字符串，
@@ -120,7 +120,7 @@ post时，会把更新的信息发送到后台，后台需要把这些信息更�
 function：周边信息
 Url：/getjson
 Method：GET
-Param：aroundclass&community  aroundclass=food entertainment hotal shop extra中的一个 community是一个字符串
+Param：get&community  get=food entertainment hotal shop extra中的一个 community 小区是一个字符串
 Requirement：在进入页面时要获取在该小区该类别的全部商家信息,用json传递，内容为：{content:[{"name":"","pername":"","addr":"","phone":"",class:""}]}
 
 ======================================================================================================================
@@ -139,7 +139,7 @@ Requirement：美食:food 娱乐:entertainment 宾馆:hotal 购物:shop 其他:e
 function：新闻获取
 Url：/getjson
 Method：get
-Param：getnews&community
+Param：get&community get=news
 Requirement：后台返回一个字符串，内容来自后台新闻发布(我怕也不知道目前有没有，但肯定会有的)
 
 ======================================================================================================================
@@ -148,7 +148,7 @@ Requirement：后台返回一个字符串，内容来自后台新闻发布(我�
 function：管家服务获取
 Url：/getjson
 Method：get
-Param：getguanjias&community&class class={rebuy,carecar,clean,house,busness,green,health}
+Param：get&community get={rebuy,carecar,clean,house,busness,green,health}中的一个
 Requirement：后台返回一个jsonarray内容为{"content":[{"name":"","charge":"","phonenum":""}]}
 
 ======================================================================================================================
