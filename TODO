@@ -139,6 +139,6 @@ function：管家服务获取
 Url：/getjson
 Method：get
 Param：getguanjias&community&class class={rebuy,carecar,clean,house,busness,green,health}
-Requirement：后台返回一个jsonarray内容为{"content":[{"name":"","charge",""}]}
+Requirement：后台返回一个jsonarray内容为{"content":[{"name":"","charge":"","phonenum":""}]}
 
 ======================================================================================================================
