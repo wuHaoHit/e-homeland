@@ -88,7 +88,7 @@ Requirement：后台返回一个字符串，内容来自后台新闻发布(我�
 ========================================================================================================================
 
 function：管家服务获取
-Url：butler/getserver
+Url：butler/getservice
 Method：get
 Param：get&community get={rebuy,carecar,clean,house,busness,green,health}中的一个
 Requirement：后台返回一个jsonarray内容为{"content":[{"name":"","charge":"","phonenum":""}]}
