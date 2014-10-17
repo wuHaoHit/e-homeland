@@ -29,13 +29,13 @@ Param:{"petImageId":"id"//本地存储的最新的图片id}
 Requirement:返回petImageId之后的图片信息,包括
 "imageUrl":"url","imageId":"id","petName":"name","petVariety":"variety",
 "petOwner":"owner",后面还有n个{"commentUser":"commentUser","comment":"comment"}
-
+requirement:这个get只有一个参数，就用键值对了
 ========================================================================================================================
 function:添加宠物评论
 url:pet/comment
 Method:post
 Param:"imageId":"id","commentUser":"user","comment":"comment"
-Requirement:
+Requirement:这个也是键值对
 ========================================================================================================================
 function:添加宠物赞
 url:pet/dianzan
@@ -98,13 +98,13 @@ function:信息发布
 url:user/pushinfo
 method:post
 param:"type","content","price","contact"."remark"
-requirement:
+requirement:这个是用户发的一些交易信息，总共5个type，包括secondHouse,secondGood ,recruit,carPool,houseKeeping.这个我发成json给你
 ========================================================================================================================
 function:获取发布的信息
 url:user/getaroundinfo
 method:get
 param:"type"
-requirement:
+requirement:根据不同的type返回该type的所有信息，可以返回给我jsonArray
 ========================================================================================================================
 Reply：上面这两个是不是重复了？？？？？？？？？？？？？？？？？？？？？？？？
 
