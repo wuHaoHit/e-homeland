@@ -20,19 +20,14 @@ Param:"petName":"name","petVariety":"variety","petOwner":"owner"
 Requirement:要求在存储图片时为图片分配一个唯一id
 
 ========================================================================================================================
-function:获取宠物图片
+function:获取宠物信息
 url:pet/getimage
 Method:get
-Param:post--{"request":"getPetImage","petImageId":"id"//本地存储的最新的图片id}
-返回petImageId之后的图片信息,包括
+Param:{"petImageId":"id"//本地存储的最新的图片id}
+Requirement:返回petImageId之后的图片信息,包括
 "imageUrl":"url","imageId":"id","petName":"name","petVariety":"variety",
 "petOwner":"owner",后面还有n个{"commentUser":"commentUser","comment":"comment"}
-      get--没有参数
-Requirement:
 
-
-Reply：你要json还是什么？？？？？？？？？？？？？？？？？？？？
-然后那个post是json的名字是吗？？？？？？？？？？？？？？？？？
 ========================================================================================================================
 function:添加宠物评论
 url:pet/comment
