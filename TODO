@@ -98,13 +98,13 @@ Requirement：后台返回一个jsonarray内容为{"content":[{"name":"","charge
 
 =======================================================================================================================
 function:信息发布
-url:arount/pushinfo
+url:user/pushinfo
 method:post
 param:"type","content","price","contact"."remark"
 requirement:
 ========================================================================================================================
 function:获取发布的信息
-url:around/getinfo
+url:user/getaroundinfo
 method:get
 param:"type"
 requirement:
