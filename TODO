@@ -103,10 +103,29 @@ requirement:这个是用户发的一些交易信息，总共5个type，包括sec
 function:获取发布的信息
 url:user/getaroundinfo
 method:get
-param:"type"
-requirement:根据不同的type返回该type的所有信息，可以返回给我jsonArray
+param:用url？"type="+type发送参数
+requirement:这个type就是上面的type，一共有5个不同的，根据不同的type返回该type的所有信息，可以返回给我jsonArray
 ========================================================================================================================
-Reply：上面这两个是不是重复了？？？？？？？？？？？？？？？？？？？？？？？？
+function:获取幸福之家信息
+url:happyhome/getimage
+Method:get
+Param:?"skip+"
+Requirement:返回petImageId之后的图片信息,包括
+"imageUrl":"url","imageId":"id","imageName":"name","message":"message",
+"petOwner":"owner",后面还有n个{"commentUser":"commentUser","comment":"comment"}
+requirement:这个功能和爱宠之家一模一样，就两个key改下，imageName就是图片名称，message就是用户发表这张图片的留言
+========================================================================================================================
+function:添加幸福之家评论
+url:happyhome/comment
+Method:post
+Param:"imageId":"id","commentUser":"user","comment":"comment"
+Requirement:这个也是键值对
+========================================================================================================================
+function:添加幸福之家赞
+url:happyhome/dianzan
+Method:post
+Param:"imageId":"id","zan":"+1"
+
 
 
 //填的时候认真一点！！！！！！！！！！！！！！！！！！！！！！别那么吊儿郎当的！！！！！！！！！！！！！！！！！！！！
